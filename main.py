@@ -36,10 +36,15 @@ def main():
     
     report_df = pd.read_csv(args.input)
     
+    # Create Folder
+    os.makedirs(args.format, exist_ok=True)
+    os.makedirs(args.output, exist_ok=True)
+    
     # Format
     format_csv(f"{args.format}/format.csv", report_df)
     format_df = pd.read_csv(f"{args.format}/format.csv")
     
+    # Create CSV files
     lung_csv(f"{args.output}/lung_result.csv", format_df)
     large_airway_csv(f"{args.output}/large_airway_result.csv", format_df)
     mediastinum_csv(f"{args.output}/mediastinum_result.csv", format_df)
