@@ -103,5 +103,8 @@ def lung_csv(save_path, report_df):
                 if counter_result.multiple==1:
                     result_df.loc[result_df['id']==id, f"{disease_name}_multiple"] = 1
 
+    # Sort df
+    result_df = result_df.sort_values(by='id')
+    
     result_df.to_csv(save_path, index=False)
     print("Lung CSV file created successfully.")

@@ -20,8 +20,8 @@ def mediastinum_csv(save_path, report_df):
         'id', 'mediastinum_report',
         'Mediastinal_Mass_presence', 'Mediastinal_Mass_anterior', 'Mediastinal_Mass_middle', 'Mediastinal_Mass_posterior', 'Mediastinal_Mass_unspecified',
         
-        'Lymphadenopathy_presence', 'Lymphadenopathy_supraclavicular', 'Lymphadenopathy_Upper_paratracheal', 'Lymphadenopathy_prevascular', 'Lymphadenopathy_prevertebral',
-        'Lymphadenopathy_Lower_paratracheal', 'Lymphadenopathy_subaortic', 'Lymphadenopathy_paraaortic', 'Lymphadenopathy_subcarinal', 'Lymphadenopathy_paraesophageal',
+        'Lymphadenopathy_presence', 'Lymphadenopathy_supraclavicular', 'Lymphadenopathy_upper_paratracheal', 'Lymphadenopathy_prevascular', 'Lymphadenopathy_prevertebral',
+        'Lymphadenopathy_lower_paratracheal', 'Lymphadenopathy_subaortic', 'Lymphadenopathy_paraaortic', 'Lymphadenopathy_subcarinal', 'Lymphadenopathy_paraesophageal',
         'Lymphadenopathy_hilar', 'Lymphadenopathy_unspecified',
         
         'Esophageal_Mass_presence', 'Esophageal_Mass_single', 'Esophageal_Mass_multiple',
@@ -110,5 +110,8 @@ def mediastinum_csv(save_path, report_df):
         if int(disease_classifier_result['Pneumomediastinum'].abnormality_presence) == 1:
             result_df.loc[result_df['id']==id, 'Pneumomediastinum_presence'] = 1
 
+    # Sort df
+    result_df = result_df.sort_values(by='id')
+    
     result_df.to_csv(save_path, index=False)
     print("Mediastinum CSV file created successfully.")

@@ -1,6 +1,9 @@
 # 환경설정 파일
 .env
 
+# Metric
+*.json
+
 # CSV
 *.csv
 !*template*.csv

@@ -90,6 +90,9 @@ def heart_and_vessel_csv(save_path, report_df):
         if int(disease_classifier_result['Arterial_Calcification'].abnormality_presence) == 1:
             result_df.loc[result_df['id']==id, "Arterial_Calcification_presence"] = 1
     
+    # Sort df
+    result_df = result_df.sort_values(by='id')
+    
     # Save to CSV
     result_df.to_csv(save_path, index=False)
     print("Heart and vessel CSV file created successfully.")
